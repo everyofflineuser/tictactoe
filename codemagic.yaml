@@ -10,8 +10,6 @@ workflows:
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           . "$HOME/.cargo/env"
           rustup default stable
-      - name: Add Windows target
-        script: |
           rustup target add x86_64-pc-windows-msvc
       - name: Build for Windows
         script: |
