@@ -84,7 +84,7 @@ This is an enhanced version of the classic game "Tic-Tac-Toe," where two players
    ```
 4. Run the game:
    ```bash
-   cargo run
+   cargo run --bin client
    ```
 
 ### OR
