@@ -1,0 +1,37 @@
+workflows:
+  windows-build:
+    name: Windows Build
+    environment:
+      groups:
+        - windows_credentials  # Группа переменных для Windows (например, ключи подписи)
+      vars:
+        BUILD_TYPE: "Release"  # Тип сборки (Release/Debug)
+    scripts:
+      - name: Install Rust
+        script: |
+          choco install rust -y
+      - name: Build for Windows
+        script: |
+          cargo build --release --target x86_64-pc-windows-msvc
+    artifacts:
+      - target/x86_64-pc-windows-msvc/release/*.exe  # Артефакты (исполняемые файлы)
+
+  ios-build:
+    name: iOS Build
+    environment:
+      groups:
+        - ios_credentials  # Группа переменных для iOS (например, сертификаты и профили)
+      vars:
+        BUILD_TYPE: "Release"  # Тип сборки (Release/Debug)
+    scripts:
+      - name: Install Rust
+        script: |
+          brew install rust
+      - name: Install iOS target
+        script: |
+          rustup target add aarch64-apple-ios
+      - name: Build for iOS
+        script: |
+          cargo build --release --target aarch64-apple-ios
+    artifacts:
+      - target/aarch64-apple-ios/release/*.a  # Артефакты (библиотеки для iOS)
