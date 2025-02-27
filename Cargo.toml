@@ -1,7 +1,7 @@
-[package]
-name = "tictactoe"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-macroquad = "0.4.13"
+[workspace]
+members = [
+    "client",
+    "server",
+    "shared",
+]
+resolver = "2"  # Рекомендуется для совместимости с новыми версиями Cargo
