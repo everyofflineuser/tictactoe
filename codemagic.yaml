@@ -9,7 +9,7 @@ workflows:
     scripts:
       - name: Install Rust
         script: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
       - name: Build for Windows
         script: |
           cargo build --release --target x86_64-pc-windows-msvc
