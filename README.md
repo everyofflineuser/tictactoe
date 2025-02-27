@@ -84,7 +84,7 @@
    ```
 4. Запустите игру:
    ```bash
-   cargo run
+   cargo run --bin client
    ```
 
 ### ИЛИ
