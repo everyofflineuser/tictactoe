@@ -7,7 +7,7 @@ workflows:
     scripts:
       - name: Install Rust
         script: |
-          brew install rustup
+          brew install rustup cargo
       - name: Rustup settings
         script: |
           rustup default stable
