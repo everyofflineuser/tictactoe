@@ -4,6 +4,12 @@ workflows:
     environment:
       vars:
         BUILD_TYPE: "Release"  # Тип сборки (Release/Debug)
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - '*'  # Триггер на все ветки
     scripts:
       - name: Install Depends
         script: |
@@ -25,27 +31,3 @@ workflows:
       cache_paths:
         - ~/.cargo
         - target
-    triggering:
-      events:                       # List the events that trigger builds
-        - push
-        - pull_request
-        - pull_request_labeled      #GitHub only
-        - tag
-      branch_patterns:              # Include or exclude watched branches
-        - pattern: '*'
-          include: true
-          source: true
-        - pattern: excluded-target
-          include: false
-          source: false
-        - pattern: included-source
-          include: true
-          source: true
-      tag_patterns:                 # Include or exclude watched tag labels
-        - pattern: '*'
-          include: true
-        - pattern: excluded-tag
-          include: false
-        - pattern: included-tag
-          include: true
-      cancel_previous_builds: false  # Set to `true` to automatically cancel outdated webhook builds
