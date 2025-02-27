@@ -13,6 +13,7 @@ workflows:
           rustup target add x86_64-pc-windows-msvc
       - name: Build for Windows
         script: |
+           . "$HOME/.cargo/env"
            cargo build --release --target x86_64-pc-windows-msvc
     artifacts:
       - target/x86_64-pc-windows-msvc/release/*.exe  # Артефакты (исполняемые файлы для Windows)
