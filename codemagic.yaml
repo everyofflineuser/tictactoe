@@ -8,6 +8,7 @@ workflows:
       - name: Install Depends
         script: |
           brew install mingw-w64
+          brew install cmake make gcc
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
       - name: Install Rust and targets using Rustup
