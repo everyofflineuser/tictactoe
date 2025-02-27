@@ -1,6 +1,7 @@
 workflows:
   windows-build:
     name: Windows Build
+    instance_type: windows
     environment:
       groups:
         - windows_credentials  # Группа переменных для Windows (например, ключи подписи)
