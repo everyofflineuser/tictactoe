@@ -9,7 +9,7 @@ workflows:
         script: |
           brew install rustup
           rustup default stable
-          source $HOME/.cargo/env
+          
       - name: Add Windows target
         script: |
           rustup target add x86_64-pc-windows-msvc
