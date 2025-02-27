@@ -9,7 +9,7 @@ workflows:
         - push
         - pull_request
       branch_patterns:
-        - '*'  # Триггер на все ветки
+        - pattern: '*'
     scripts:
       - name: Install Depends
         script: |
