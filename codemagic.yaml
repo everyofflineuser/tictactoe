@@ -7,7 +7,7 @@ workflows:
     scripts:
       - name: Install Rust using Rustup
         script: |
-          brew install rustup
+          brew install rust rustup
           rustup default stable
       - name: Add Windows target
         script: |
