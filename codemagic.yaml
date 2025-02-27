@@ -7,13 +7,8 @@ workflows:
     scripts:
       - name: Install Rust
         script: |
-          brew install rustup cargo
-      - name: Rustup settings
-        script: |
-          rustup default stable
-      - name: Add Windows target
-        script: |
-          rustup target add x86_64-pc-windows-msvc
+          brew install rust
+      
       - name: Build for Windows
         script: |
           cargo build --release --bin client --target x86_64-pc-windows-msvc
