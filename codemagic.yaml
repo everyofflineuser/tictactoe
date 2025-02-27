@@ -8,7 +8,7 @@ workflows:
       - name: Install Depends
         script: |
           brew install mingw-w64
-          brew install cmake make gcc lld
+          brew install cmake make gcc lld glibc
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
       - name: Install Rust and targets using Rustup
@@ -16,13 +16,17 @@ workflows:
           . "$HOME/.cargo/env"
           rustup default stable
           rustup target add x86_64-pc-windows-gnu
-          rustup target add x86_64-linux-gnu-gcc
+          rustup target add x86_64-unknown-linux-gnu
       - name: Building
         script: |
            . "$HOME/.cargo/env"
            cargo build --release --target x86_64-pc-windows-gnu
-           cargo build --release --target x86_64-linux-gnu-gcc
+           cargo build --release --target x86_64-unknown-linux-gnu
     artifacts:
       - target/x86_64-pc-windows-gnu/release/*.exe
       - target/x86_64-unknown-linux-gnu/release/client
-      - target/x86_64-linux-gnu-gcc/release/server
+      - target/x86_64-unknown-linux-gnu/release/server
+    cache:
+      cache_paths:
+        - ~/.cargo
+        - target
