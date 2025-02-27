@@ -1,20 +1,27 @@
 workflows:
-  windows-build:
-    name: Windows Build
+  build:
+    name: Build
     environment:
       vars:
         BUILD_TYPE: "Release"  # Тип сборки (Release/Debug)
     scripts:
-      - name: Install Rust using Rustup
+      - name: Install Depends
         script: |
           brew install mingw-w64
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+      - name: Install Rust and targets using Rustup
+        script: |
           . "$HOME/.cargo/env"
           rustup default stable
           rustup target add x86_64-pc-windows-gnu
-      - name: Build for Windows
+          rustup target add x86_64-unknown-linux-gnu
+      - name: Building
         script: |
            . "$HOME/.cargo/env"
            cargo build --release --target x86_64-pc-windows-gnu
+           cargo build --release --target x86_64-unknown-linux-gnu
     artifacts:
-      - target/x86_64-pc-windows-gnu/release/*.exe  # Артефакты (исполняемые файлы для Windows)
+      - target/x86_64-pc-windows-gnu/release/*.exe
+      - target/x86_64-unknown-linux-gnu/release/client
+      - target/x86_64-unknown-linux-gnu/release/server
