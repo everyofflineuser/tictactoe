@@ -9,12 +9,11 @@ workflows:
         script: |
           brew install rustup
           rustup default stable
-          $HOME/.cargo/bin
       - name: Add Windows target
         script: |
           rustup target add x86_64-pc-windows-msvc
       - name: Build for Windows
         script: |
-          cargo build --release --target x86_64-pc-windows-msvc
+           $HOME/.cargo/bin/cargo build --release --target x86_64-pc-windows-msvc
     artifacts:
       - target/x86_64-pc-windows-msvc/release/*.exe  # Артефакты (исполняемые файлы для Windows)
