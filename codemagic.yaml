@@ -7,6 +7,7 @@ workflows:
     scripts:
       - name: Install Rust using Rustup
         script: |
+          brew install mingw-w64
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           . "$HOME/.cargo/env"
           rustup default stable
