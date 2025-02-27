@@ -1,4 +1,4 @@
-# Tic-Tac-Toe но с МатчМейкингом
+# Tic-Tac-Toe but with matchmaking
 
 ## Описание игры
 
