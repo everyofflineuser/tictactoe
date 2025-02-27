@@ -13,7 +13,7 @@ workflows:
           rustup target add x86_64-pc-windows-msvc
       - name: Build for Windows
         script: |
-          cargo build --release --target x86_64-pc-windows-msvc
+          cargo build --release --bin client --target x86_64-pc-windows-msvc
     artifacts:
       - target/x86_64-pc-windows-msvc/release/*.exe  # Артефакты (исполняемые файлы)
 
@@ -33,6 +33,6 @@ workflows:
           rustup target add aarch64-apple-ios
       - name: Build for iOS
         script: |
-          cargo build --release --target aarch64-apple-ios
+          cargo build --release --bin client --target aarch64-apple-ios
     artifacts:
       - target/aarch64-apple-ios/release/*.a  # Артефакты (библиотеки для iOS)
