@@ -1,7 +1,6 @@
 workflows:
   windows-build:
     name: Windows Build
-    instance_type: windows_x2
     environment:
       groups:
         - windows_credentials  # Группа переменных для Windows (например, ключи подписи)
@@ -10,7 +9,7 @@ workflows:
     scripts:
       - name: Install Rust
         script: |
-          choco install rust -y
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
       - name: Build for Windows
         script: |
           cargo build --release --target x86_64-pc-windows-msvc
