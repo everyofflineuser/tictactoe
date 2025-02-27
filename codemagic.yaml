@@ -2,14 +2,15 @@ workflows:
   windows-build:
     name: Windows Build
     environment:
-      groups:
-        - windows_credentials  # Группа переменных для Windows (например, ключи подписи)
       vars:
         BUILD_TYPE: "Release"  # Тип сборки (Release/Debug)
     scripts:
       - name: Install Rust
         script: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+          brew install rust
+      - name: Add Windows target
+        script: |
+          rustup target add x86_64-pc-windows-msvc
       - name: Build for Windows
         script: |
           cargo build --release --target x86_64-pc-windows-msvc
